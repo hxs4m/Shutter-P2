@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dwos2vir602v6"]
+
+[ext_resource type="PackedScene" uid="uid://bd58cobyo6nji" path="res://Models/Trees (lvl2)/tree_28.tscn" id="1_6p5ot"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4qk4q"]
+height = 10.383301
+
+[node name="Trees2" type="StaticBody3D" unique_id=984764705]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1200500428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6606903, 0)
+shape = SubResource("CapsuleShape3D_4qk4q")
+
+[node name="tree08" parent="." unique_id=1305113165 instance=ExtResource("1_6p5ot")]
