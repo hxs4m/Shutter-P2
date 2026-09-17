@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dwos2vir602v6" path="res://Models/Trees (lvl2)/Final_tree2.tscn" id="2_tct44"]
 [ext_resource type="PackedScene" uid="uid://d1t0q35ek4u28" path="res://Models/Trees (lvl2)/Final_tree1.tscn" id="3_e8ep2"]
 [ext_resource type="PackedScene" uid="uid://dslhs1u0jn5p4" path="res://Models/Lvl0/Door/low-poly_door.glb" id="4_0atve"]
-[ext_resource type="PackedScene" uid="uid://dp82rxvrjnjec" path="res://scenes/Bulb_Particles.tscn" id="6_e8ep2"]
 [ext_resource type="Texture2D" uid="uid://36v4uc6fbqt3" path="res://textures/stone-wall-v0-63mmfjnritm81.png" id="7_0atve"]
+[ext_resource type="Script" uid="uid://dq6aq1a1a4lbk" path="res://scripts/abstract_main.gd" id="7_3ykuj"]
+[ext_resource type="Texture2D" uid="uid://eb61ht82or2a" path="res://Abstract Pics/Screenshot 2026-09-13 205505.png" id="8_e3uxt"]
+[ext_resource type="Texture2D" uid="uid://cyhou8nrmi1x" path="res://Abstract Pics/Screenshot 2026-09-13 205601.png" id="9_ghoj8"]
+[ext_resource type="Texture2D" uid="uid://balrrjm4i436p" path="res://Abstract Pics/Screenshot 2026-09-13 205623.png" id="10_6y0h7"]
+[ext_resource type="Shader" uid="uid://dn6n3sbj07vkr" path="res://Abstract Pics/abstract.gdshader" id="11_bv24h"]
 
 [sub_resource type="Environment" id="Environment_lk6hv"]
 volumetric_fog_enabled = true
@@ -26,6 +30,48 @@ size = Vector3(496.72778, 1, 497.9394)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lmdrw"]
 size = Vector3(1.224884, 1.9067383, 0.17993164)
 
+[sub_resource type="Curve" id="Curve_ctatt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.60215056, 0.7857144), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_r2wbw"]
+curve = SubResource("Curve_ctatt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iq8pr"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 1)
+gravity = Vector3(0, -0.5, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 1.0999978
+tangential_accel_min = -0.5000022
+tangential_accel_max = 0.59999776
+damping_max = 0.59000003
+use_scale_3d = true
+scale_3d_min = Vector3(0.1, 0.1, 0.1)
+scale_3d_max = Vector3(0.2, 0.2, 0.2)
+scale_curve = SubResource("CurveTexture_r2wbw")
+turbulence_noise_strength = 7.75
+turbulence_noise_speed_random = 4.0
+
+[sub_resource type="Gradient" id="Gradient_xgqkh"]
+offsets = PackedFloat32Array(0, 0.10625, 0.26458332, 0.79375)
+colors = PackedColorArray(0.3081261, 0.32039955, 0.31989104, 1, 0.39813802, 0.40422657, 0.39091516, 1, 0.45741278, 0.45149457, 0.4252661, 1, 0.83391005, 0.8374912, 0.8347666, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hyyc2"]
+gradient = SubResource("Gradient_xgqkh")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xnc1k"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_hyyc2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_e8ep2"]
+material = SubResource("StandardMaterial3D_xnc1k")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmdrw"]
 albedo_texture = ExtResource("7_0atve")
 uv1_scale = Vector3(300, 50, 1)
@@ -36,6 +82,108 @@ size = Vector3(1, 100, 500)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8napb"]
 size = Vector3(1, 7, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f17e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e3uxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ghoj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6y0h7")
+}],
+"loop": 1,
+"name": &"abstract",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_e3uxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ghoj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6y0h7")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ycwkd"]
+render_priority = 0
+shader = ExtResource("11_bv24h")
+shader_parameter/line_threshold = 0.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_2074x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lh2be"]
+
+[sub_resource type="Curve" id="Curve_h51cr"]
+_data = [Vector2(0.005376339, 0), 0.0, 0.0, 0, 0, Vector2(0.20967743, 0.9910715), 0.0, 0.0, 0, 0, Vector2(0.6989248, 0.9642858), 0.0, 0.0, 0, 0, Vector2(0.9892473, 0.044642925), -1.8932148, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_xdu5l"]
+curve = SubResource("Curve_h51cr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h51cr"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -0.5, 0)
+linear_accel_min = 0.85999775
+linear_accel_max = 1.7099978
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 14.589997
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 5.1499977
+damping_max = 4.721
+use_scale_3d = true
+scale_3d_min = Vector3(0.1, 0.1, 0.1)
+scale_3d_max = Vector3(0.4, 0.4, 0.4)
+scale_curve = SubResource("CurveTexture_xdu5l")
+turbulence_noise_scale = 6.305
+
+[sub_resource type="Gradient" id="Gradient_46cpx"]
+colors = PackedColorArray(0.36862746, 0.36862746, 0.36862746, 1, 0.011764706, 0.011764706, 0.011764706, 0.2509804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kcdkn"]
+gradient = SubResource("Gradient_46cpx")
+fill = 2
+fill_from = Vector2(0.5105042, 0.52310926)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ban3q"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_kcdkn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ajw17"]
+material = SubResource("StandardMaterial3D_ban3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycwkd"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -0.5, 0)
+linear_accel_min = 0.85999775
+linear_accel_max = 1.7099978
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 14.589997
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 5.1499977
+damping_max = 4.721
+use_scale_3d = true
+scale_3d_min = Vector3(0.1, 0.1, 0.1)
+scale_3d_max = Vector3(0.2, 0.2, 0.2)
+scale_curve = SubResource("CurveTexture_xdu5l")
+turbulence_noise_scale = 6.305
+
+[sub_resource type="QuadMesh" id="QuadMesh_88age"]
+material = SubResource("StandardMaterial3D_ban3q")
 
 [node name="Lvl2" type="Node3D" unique_id=1805683175]
 
@@ -17223,9 +17371,17 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -247
 [node name="SpawnPoint" type="Marker3D" parent="." unique_id=1205074546]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.256315, 2.7947903, -9.059725)
 
-[node name="GPUParticles3D" parent="." unique_id=1757198236 instance=ExtResource("6_e8ep2")]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1757198236]
 transform = Transform3D(464.8985, 0, 0, 0, 0.75547737, 0, 0, 0, 242.34018, 0.2750969, 2.3836346, -0.0074157715)
+cast_shadow = 0
 amount = 10000
+lifetime = 5.0
+speed_scale = 0.25
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_iq8pr")
+draw_pass_1 = SubResource("QuadMesh_e8ep2")
 
 [node name="Walls" type="Node3D" parent="." unique_id=1511463501]
 
@@ -17272,3 +17428,410 @@ mesh = SubResource("BoxMesh_iq8pr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Wall4" unique_id=580313845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_8napb")
+
+[node name="Abstracts" type="Node3D" parent="." unique_id=1948101450]
+
+[node name="Abstract1" type="Area3D" parent="Abstracts" unique_id=191044830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.28462, 2.2505627, -36.140686)
+script = ExtResource("7_3ykuj")
+target_shape = 2
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract1" unique_id=1504529228]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract1" unique_id=1379407305]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract1" unique_id=678922188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract1" unique_id=2113839087]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract1" unique_id=314524590]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract2" type="Area3D" parent="Abstracts" unique_id=699955913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.38631, 2.2505627, -208.44298)
+script = ExtResource("7_3ykuj")
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract2" unique_id=2043744539]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract2" unique_id=1203867024]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract2" unique_id=1290819378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract2" unique_id=1118417347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract2" unique_id=534759003]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract3" type="Area3D" parent="Abstracts" unique_id=1593555428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.04515, 2.2505627, -208.44298)
+script = ExtResource("7_3ykuj")
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract3" unique_id=1956763566]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract3" unique_id=96811013]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract3" unique_id=1101435068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract3" unique_id=1450333687]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract3" unique_id=1896498699]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract5" type="Area3D" parent="Abstracts" unique_id=5122713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 219.04515, 2.2505627, 162.35027)
+script = ExtResource("7_3ykuj")
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract5" unique_id=1559804028]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract5" unique_id=1511306861]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract5" unique_id=1069532933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract5" unique_id=543540657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract5" unique_id=170326316]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract4" type="Area3D" parent="Abstracts" unique_id=188942396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -220.45088, 2.2505627, -208.44298)
+script = ExtResource("7_3ykuj")
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract4" unique_id=534739263]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract4" unique_id=181326913]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract4" unique_id=1626573161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract4" unique_id=766224528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract4" unique_id=1723475371]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract6" type="Area3D" parent="Abstracts" unique_id=424686727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -220.45088, 2.2505627, 201.75334)
+script = ExtResource("7_3ykuj")
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract6" unique_id=1233693423]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract6" unique_id=21010181]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract6" unique_id=101647973]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract6" unique_id=1072508805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract6" unique_id=764188415]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract7" type="Area3D" parent="Abstracts" unique_id=51824466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.51549, 2.2505627, 201.75334)
+script = ExtResource("7_3ykuj")
+target_shape = 1
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract7" unique_id=2102129108]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract7" unique_id=616049486]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract7" unique_id=1078980937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract7" unique_id=1261796572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract7" unique_id=392541577]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract8" type="Area3D" parent="Abstracts" unique_id=358042248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.51549, 2.2505627, -192.82951)
+script = ExtResource("7_3ykuj")
+target_shape = 1
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract8" unique_id=1155741726]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract8" unique_id=988078596]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract8" unique_id=663871031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract8" unique_id=945663551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract8" unique_id=1063103588]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract9" type="Area3D" parent="Abstracts" unique_id=704718177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.40028, 2.2505627, 119.47069)
+script = ExtResource("7_3ykuj")
+target_shape = 1
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract9" unique_id=1646491508]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract9" unique_id=1564603113]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract9" unique_id=891398943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract9" unique_id=65336660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract9" unique_id=1672062444]
+omni_range = 10.0
+omni_attenuation = 0.1
+
+[node name="Abstract10" type="Area3D" parent="Abstracts" unique_id=1847672709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 213.51013, 2.2505627, -33.8743)
+script = ExtResource("7_3ykuj")
+target_shape = 1
+coin_sprite_frames = SubResource("SpriteFrames_f17e3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Abstracts/Abstract10" unique_id=1693654930]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.2698059, 0)
+material_override = SubResource("ShaderMaterial_ycwkd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Abstracts/Abstract10" unique_id=1175922305]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_lh2be")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Abstracts/Abstract10" unique_id=1008305540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.17890024, 0)
+cast_shadow = 0
+amount = 30
+lifetime = 0.5
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_h51cr")
+draw_pass_1 = SubResource("QuadMesh_ajw17")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Abstracts/Abstract10" unique_id=1014752211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35780048, 0)
+cast_shadow = 0
+amount = 30
+sub_emitter = NodePath(".")
+randomness = 1.0
+transform_align = 4
+transform_align_axis = 1
+process_material = SubResource("ParticleProcessMaterial_ycwkd")
+draw_pass_1 = SubResource("QuadMesh_88age")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Abstracts/Abstract10" unique_id=971647174]
+omni_range = 10.0
+omni_attenuation = 0.1
