@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dhc55xonpxwek"]
+
+[ext_resource type="Texture2D" uid="uid://bw2axu40vvqsn" path="res://textures/Reflection.png" id="1_0j6ww"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k1dea"]
+albedo_texture = ExtResource("1_0j6ww")
+uv1_scale = Vector3(750, 700, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2074x"]
+material = SubResource("StandardMaterial3D_k1dea")
+size = Vector3(750, 1, 750)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iq8pr"]
+size = Vector3(750, 1, 750)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8napb"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.4803155, 0.4885561, 0.50504845, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(0.44929093, 0.45734072, 0.47345108, 1)
+
+[sub_resource type="Sky" id="Sky_iq8pr"]
+sky_material = SubResource("ProceduralSkyMaterial_8napb")
+
+[sub_resource type="Environment" id="Environment_2074x"]
+background_mode = 2
+sky = SubResource("Sky_iq8pr")
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.5037685, 0.5037685, 0.50376844, 1)
+
+[node name="lvl_5" type="Node3D" unique_id=997557004]
+
+[node name="Plane" type="StaticBody3D" parent="." unique_id=1187235925]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane" unique_id=1974577874]
+mesh = SubResource("BoxMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane" unique_id=1212823929]
+shape = SubResource("BoxShape3D_iq8pr")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1341692654]
+environment = SubResource("Environment_2074x")

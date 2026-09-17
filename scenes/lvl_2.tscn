@@ -202,6 +202,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4901123, 0, 0.82473755)
 shape = SubResource("BoxShape3D_iq8pr")
 
 [node name="Trees" type="Node3D" parent="." unique_id=1000525449]
+visible = false
 script = ExtResource("2_422u3")
 
 [node name="Trees2_2" parent="Trees" unique_id=304088401 instance=ExtResource("2_tct44")]
