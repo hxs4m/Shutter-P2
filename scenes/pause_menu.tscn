@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://cbpjd6tuvcxli"]
+
+[ext_resource type="Script" uid="uid://dcfg183n3t60v" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://dxhs1qjlil2ls" path="res://scenes/pausebutton.gd" id="2_myx47"]
+[ext_resource type="FontFile" uid="uid://bghs7isve4i5x" path="res://textures/CrimsonHorrorThree-9MdM5.ttf" id="3_kukqi"]
+
+[sub_resource type="Gradient" id="Gradient_myx47"]
+offsets = PackedFloat32Array(0.17068966, 0.35689655, 1)
+colors = PackedColorArray(0, 0, 0, 0.78431374, 0, 0, 0, 0.5882353, 0, 0, 0, 0.39215687)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2074x"]
+gradient = SubResource("Gradient_myx47")
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=353940448]
+process_mode = 3
+script = ExtResource("1_n87rw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2020871224]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2074x")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=101971592]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -222.0
+offset_right = 413.0
+offset_bottom = 128.0
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(50, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=575816946]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1916523101]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_myx47")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ContinueButton" unique_id=307363388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.83137256, 0.8156863, 0.7058824, 0.5882353)
+theme_override_fonts/normal_font = ExtResource("3_kukqi")
+bbcode_enabled = true
+text = "[font_size=30][wave amp=10.0 freq=5.0 ]Continue"
+fit_content = true
+
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1397516047]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_myx47")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/SettingsButton" unique_id=1837758056]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.83137256, 0.8156863, 0.7058824, 0.5882353)
+theme_override_fonts/normal_font = ExtResource("3_kukqi")
+bbcode_enabled = true
+text = "[font_size=30][wave amp=10.0 freq=5.0 ]Settings"
+fit_content = true
+
+[node name="BackToMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=900490717]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_myx47")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/BackToMenuButton" unique_id=974850504]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.83137256, 0.8156863, 0.7058824, 0.5882353)
+theme_override_fonts/normal_font = ExtResource("3_kukqi")
+bbcode_enabled = true
+text = "[font_size=30][wave amp=10.0 freq=5.0 ]Back To Main Menu"
+fit_content = true
+
+[node name="QuitGameButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=776217512]
+custom_minimum_size = Vector2(220, 50)
+layout_mode = 2
+flat = true
+script = ExtResource("2_myx47")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/QuitGameButton" unique_id=292998970]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.83137256, 0.8156863, 0.7058824, 0.5882353)
+theme_override_fonts/normal_font = ExtResource("3_kukqi")
+bbcode_enabled = true
+text = "[font_size=30][wave amp=10.0 freq=5.0 ]Quit Game"
+fit_content = true

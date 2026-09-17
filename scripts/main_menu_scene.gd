@@ -13,7 +13,7 @@ extends Control
 @export var scene_transition_fade_time: float = 1.0  # Slow fade out duration when PLAY is clicked
 @export var fade_steps: int = 4  # Lower steps = choppier retro fade (PS1 style)
 
-const DISCLAIMER_1 := "All features of this build are subject to change.\nThis is a prototype."
+const DISCLAIMER_1 := "The Usage Of Headphones Is Advised."
 const DISCLAIMER_2 := "WARNING:\nThis game contains disturbing imagery and loud noises."
 const CONTROLS_TEXT := "CONTROLS:\nWASD - Movement\nShift - Sprint\nLeft Click - Snap\nSpace - Jump\n* Note: Timed jumps result in bhopping"
 
@@ -184,6 +184,9 @@ func _stepped_fade_bg(rect: ColorRect, start_alpha: float, end_alpha: float, dur
 # BUTTON CALLBACKS
 # ============================================================
 func _on_play_pressed() -> void:
+	ScoreManager.total_overall_score = 0
+	ScoreManager.level_score = 0 
+	ScoreManager.reset_level_stats()
 	if _is_transitioning:
 		return
 	_is_transitioning = true

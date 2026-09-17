@@ -127,7 +127,7 @@ shader_parameter/line_threshold = 0.5
 _data = [Vector2(0.005376339, 0), 0.0, 0.0, 0, 0, Vector2(0.20967743, 0.9910715), 0.0, 0.0, 0, 0, Vector2(0.6989248, 0.9642858), 0.0, 0.0, 0, 0, Vector2(0.9892473, 0.044642925), -1.8932148, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_xdu5l"]
+[sub_resource type="CurveTexture" id="CurveTexture_3ykuj"]
 curve = SubResource("Curve_h51cr")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h51cr"]
@@ -144,18 +144,18 @@ damping_max = 4.721
 use_scale_3d = true
 scale_3d_min = Vector3(0.1, 0.1, 0.1)
 scale_3d_max = Vector3(0.4, 0.4, 0.4)
-scale_curve = SubResource("CurveTexture_xdu5l")
+scale_curve = SubResource("CurveTexture_3ykuj")
 turbulence_noise_scale = 6.305
 
-[sub_resource type="Gradient" id="Gradient_46cpx"]
+[sub_resource type="Gradient" id="Gradient_e3uxt"]
 colors = PackedColorArray(0.36862746, 0.36862746, 0.36862746, 1, 0.011764706, 0.011764706, 0.011764706, 0.2509804)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_kcdkn"]
-gradient = SubResource("Gradient_46cpx")
+gradient = SubResource("Gradient_e3uxt")
 fill = 2
 fill_from = Vector2(0.5105042, 0.52310926)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ban3q"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghoj8"]
 transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
@@ -163,7 +163,7 @@ shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_kcdkn")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ajw17"]
-material = SubResource("StandardMaterial3D_ban3q")
+material = SubResource("StandardMaterial3D_ghoj8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ycwkd"]
 emission_shape = 1
@@ -179,11 +179,11 @@ damping_max = 4.721
 use_scale_3d = true
 scale_3d_min = Vector3(0.1, 0.1, 0.1)
 scale_3d_max = Vector3(0.2, 0.2, 0.2)
-scale_curve = SubResource("CurveTexture_xdu5l")
+scale_curve = SubResource("CurveTexture_3ykuj")
 turbulence_noise_scale = 6.305
 
 [sub_resource type="QuadMesh" id="QuadMesh_88age"]
-material = SubResource("StandardMaterial3D_ban3q")
+material = SubResource("StandardMaterial3D_ghoj8")
 
 [node name="Lvl2" type="Node3D" unique_id=1805683175]
 
@@ -17377,6 +17377,7 @@ transform = Transform3D(464.8985, 0, 0, 0, 0.75547737, 0, 0, 0, 242.34018, 0.275
 cast_shadow = 0
 amount = 10000
 lifetime = 5.0
+preprocess = 10.0
 speed_scale = 0.25
 randomness = 1.0
 transform_align = 4

@@ -49,7 +49,7 @@ var _base_teleport_pos: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 
 	if not is_in_group("MainTimer"):
 		add_to_group("MainTimer")
@@ -60,6 +60,8 @@ func _ready() -> void:
 	audio_player = AudioStreamPlayer.new()
 	audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(audio_player)
+
+	timer.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 	# --- Centering & Initial Position ---
 	var viewport_width: float = get_viewport().get_visible_rect().size.x
