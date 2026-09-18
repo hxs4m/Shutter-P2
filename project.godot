@@ -22,6 +22,7 @@ ScoreManager="*uid://cer2meco4q6c"
 [display]
 
 window/size/borderless=true
+window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
