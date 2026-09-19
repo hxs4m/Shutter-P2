@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bphooiq0v00f8"]
+
+[ext_resource type="Texture2D" uid="uid://cf07hjq3w87j2" path="res://textures/roof.png" id="1_gg5xv"]
+
+[resource]
+albedo_color = Color(0.6781177, 0.6781177, 0.67811763, 1)
+albedo_texture = ExtResource("1_gg5xv")
+uv1_scale = Vector3(10, 10, 1)
+uv1_offset = Vector3(0, -0.04, 0)

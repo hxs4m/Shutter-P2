@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8m0rejp0yd5o"
+path="res://.godot/imported/Car_Hood_Close.ogg-543c74d40ace1f8a28cb1659a2330c1c.oggvorbisstr"
+
+[deps]
+
+source_file="res://Models/cars/Sound effects/Car_Hood_Close.ogg"
+dest_files=["res://.godot/imported/Car_Hood_Close.ogg-543c74d40ace1f8a28cb1659a2330c1c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
