@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dal01x2ei6b0a" path="res://Models/Camera/cam1_sheet_with_backpanel.png" id="14_ts3gi"]
 [ext_resource type="PackedScene" uid="uid://d0ckw6vvjrw8e" path="res://scenes/Enemy.tscn" id="16_dss4m"]
 [ext_resource type="AudioStream" uid="uid://mtiv5aqvv1hl" path="res://sfx/freesound_community-factory-fluorescent-light-buzz-6871.mp3" id="17_7t5mc"]
-[ext_resource type="Texture2D" uid="uid://c7uucwelkrbss" path="res://crosshair1.png" id="17_f17e3"]
+[ext_resource type="Texture2D" path="res://crosshair1.png" id="17_f17e3"]
 [ext_resource type="AudioStream" uid="uid://bodhhv4dinrvq" path="res://sfx/freesound_community-four_voices_whispering-6943.mp3" id="17_kpybi"]
 [ext_resource type="Script" uid="uid://dobk0s05hij4r" path="res://scenes/screen_fade.gd" id="17_lakw3"]
 [ext_resource type="AudioStream" uid="uid://byyv83ryafybv" path="res://sfx/distorted-trumpets-hl2.mp3" id="18_ctatt"]

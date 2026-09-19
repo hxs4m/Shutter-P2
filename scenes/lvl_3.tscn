@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bqarwakha3u1k"]
 
-[ext_resource type="Texture2D" uid="uid://dpqyc0mehv4fk" path="res://textures/sky3.jpg" id="1_b2vgo"]
+[ext_resource type="PackedScene" uid="uid://cr0l8s7wf40t7" path="res://scenes/lvl_3_entity.tscn" id="1_aegdx"]
+[ext_resource type="Texture2D" uid="uid://c3tok1g8ftbvp" path="res://textures/Stars6.png" id="1_b2vgo"]
 [ext_resource type="Material" uid="uid://dfw5pat6efjgq" path="res://Materials/Parking_Lot2.tres" id="1_en466"]
 [ext_resource type="Material" uid="uid://cpjxd8a84r83c" path="res://Materials/Slope.tres" id="2_s5o8y"]
 [ext_resource type="Material" uid="uid://bphooiq0v00f8" path="res://Materials/parking_roof.tres" id="4_s0p5c"]
@@ -46,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://d04kn8q4j3vf1" path="res://textures/fence.png" id="44_108hs"]
 [ext_resource type="Texture2D" uid="uid://ccdhtjibjdw75" path="res://Models/buulb_metal.png" id="45_b2vgo"]
 [ext_resource type="AudioStream" uid="uid://mtiv5aqvv1hl" path="res://sfx/freesound_community-factory-fluorescent-light-buzz-6871.mp3" id="46_aegdx"]
+[ext_resource type="Texture2D" uid="uid://jo6klqigw5yd" path="res://textures/moon.png" id="48_e55sf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aegdx"]
 panorama = ExtResource("1_b2vgo")
@@ -2454,6 +2456,11 @@ material = SubResource("StandardMaterial3D_xnc1k")
 
 [node name="lvl_3" type="Node3D" unique_id=7805308]
 
+[node name="Lvl3_entity" parent="." unique_id=667635756 node_paths=PackedStringArray("player") instance=ExtResource("1_aegdx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.7796, 126.76768, 0)
+player = NodePath("../Player")
+move_speed = 12.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=86698238]
 environment = SubResource("Environment_fk0w4")
 
@@ -2629,7 +2636,7 @@ mesh = SubResource("ArrayMesh_m3eo5")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane+Walls/floor1/StaticBody3D" unique_id=1932707824]
 shape = SubResource("ConcavePolygonShape3D_2tblq")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=236805151 node_paths=PackedStringArray("flash_color_rect") groups=["PlayerGroup"]]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=236805151 groups=["PlayerGroup"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.00581, 127.00403, 112.281876)
 script = ExtResource("6_fnnx1")
 MAX_BHOP_SPEED = 18.0
@@ -2643,7 +2650,6 @@ jump_sounds = Array[AudioStream]([ExtResource("10_ol4a5"), ExtResource("8_os076"
 land_sounds = Array[AudioStream]([ExtResource("8_os076"), ExtResource("7_44ehk"), ExtResource("10_ol4a5"), ExtResource("9_tbwtu")])
 wall_hit_sounds = Array[AudioStream]([ExtResource("11_twnxe"), ExtResource("12_108hs"), ExtResource("13_hynuq"), ExtResource("14_b2vgo")])
 camera_snap_sound = ExtResource("15_aegdx")
-flash_color_rect = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=595677868]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -2659,19 +2665,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5990729, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head" unique_id=532138273]
 
-[node name="Main_Camera" type="Node3D" parent="Player/Head/Camera3D" unique_id=793696301 node_paths=PackedStringArray("camera_viewport", "screen_mesh", "flash_color_rect", "photo_shapecast", "photo_raycast", "crosshair", "zoom_camera", "stun_light", "repel_light", "reveal_light", "mode_label")]
+[node name="Main_Camera" type="Node3D" parent="Player/Head/Camera3D" unique_id=793696301 node_paths=PackedStringArray("camera_viewport", "screen_mesh", "photo_shapecast", "photo_raycast", "zoom_camera", "stun_light", "repel_light", "reveal_light")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32300186, -1.4890137, -0.2250061)
 script = ExtResource("16_e55sf")
 SWAY_AMOUNT = 0.008
 STRAFE_ROLL_AMOUNT = 0.01
 camera_viewport = NodePath("CameraScreenViewport")
 screen_mesh = NodePath("cam/ScreenMesh")
-flash_color_rect = NodePath("")
 photo_shapecast = NodePath("../ShapeCast3D")
 photo_raycast = NodePath("../RayCast3D")
 capture_sound = ExtResource("17_gdfka")
 shutter_sound = ExtResource("15_aegdx")
-crosshair = NodePath("")
 zoom_camera = NodePath("..")
 zoom_sound = ExtResource("18_fk0w4")
 cycle_sound = ExtResource("19_b8woo")
@@ -2679,7 +2683,6 @@ stun_light = NodePath("stunl")
 repel_light = NodePath("repl")
 reveal_light = NodePath("revl")
 repel_color = Color(0.9294619, 0.79856515, 7.70092e-07, 1)
-mode_label = NodePath("")
 
 [node name="cam" type="Node3D" parent="Player/Head/Camera3D/Main_Camera" unique_id=1173888921]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.2800598, 0.9069824, -0.8302307)
@@ -12361,3 +12364,8 @@ light_specular = 0.0
 shadow_enabled = true
 omni_range = 500.0
 omni_attenuation = 0.5
+
+[node name="Moon" type="Sprite3D" parent="." unique_id=125559200]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 1214.908, 1168.973, 111.85251)
+billboard = 1
+texture = ExtResource("48_e55sf")

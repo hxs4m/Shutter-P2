@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cr0l8s7wf40t7"]
+
+[ext_resource type="Script" uid="uid://mjlaveulvmt2" path="res://scripts/lvl_3_entity.gd" id="1_jnvrd"]
+[ext_resource type="Shader" uid="uid://ysvudefgvmgs" path="res://Models/lvl3/lvl_3_entity.gdshader" id="1_p6tka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnvrd"]
+render_priority = 0
+shader = ExtResource("1_p6tka")
+shader_parameter/slime_color = Color(1, 0.7411765, 1, 0.39607844)
+shader_parameter/wobble_speed = 2.0
+shader_parameter/wobble_intensity = 0.08
+shader_parameter/jitter_resolution = 60.0
+shader_parameter/mouth_color = Color(0, 0, 0, 1)
+shader_parameter/smile_width = 0.22
+shader_parameter/smile_curve = 4.0
+shader_parameter/smile_thickness = 0.015
+shader_parameter/smile_y_offset = 0.05
+
+[sub_resource type="SphereMesh" id="SphereMesh_2074x"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2074x"]
+
+[node name="Lvl3_entity" type="CharacterBody3D" unique_id=667635756]
+script = ExtResource("1_jnvrd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1683278940]
+transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_jnvrd")
+mesh = SubResource("SphereMesh_2074x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1969373785]
+shape = SubResource("SphereShape3D_2074x")

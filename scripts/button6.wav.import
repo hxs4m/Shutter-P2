@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://iaxeqhxbr8tc"
-path="res://.godot/imported/flashlight1.wav-56b02b131bd29be6b07342a878144d46.sample"
+uid="uid://duvimfcbxal0y"
+path="res://.godot/imported/button6.wav-8c896ac5acf07428eff3c4e7c9eb555d.sample"
 
 [deps]
 
-source_file="res://flashlight1.wav"
-dest_files=["res://.godot/imported/flashlight1.wav-56b02b131bd29be6b07342a878144d46.sample"]
+source_file="res://scripts/button6.wav"
+dest_files=["res://.godot/imported/button6.wav-8c896ac5acf07428eff3c4e7c9eb555d.sample"]
 
 [params]
 
